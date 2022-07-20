@@ -18,12 +18,7 @@ export const GithubProvider = ({ children }) => {
 			q: text,
 		});
 		const response = await fetch(
-			`https://api.github.com/search/users?${params}`,
-			{
-				headers: {
-					Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-				},
-			}
+			`https://api.github.com/search/users?${params}`
 		);
 		const { items } = await response.json();
 
@@ -36,11 +31,7 @@ export const GithubProvider = ({ children }) => {
 	const getUser = async (login) => {
 		setLoading();
 
-		const response = await fetch(`https://api.github.com/users/${login}`, {
-			headers: {
-				Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-			},
-		});
+		const response = await fetch(`https://api.github.com/users/${login}`);
 
 		const data = await response.json();
 		console.log(data);
